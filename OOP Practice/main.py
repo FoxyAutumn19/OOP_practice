@@ -28,3 +28,13 @@ class Supplier:
         if item_name == "Baked Beans":  return 0.25
         if item_name == "Aspirin":      return 0.50
         return 0.00 # Default if item not found
+
+
+class Supermarket:
+    """Manages the store's money, stock levels, and profits."""
+    def __init__(self, name, starting_money):
+        self.name = name
+        self.money = starting_money
+        self.starting_money = starting_money
+        self.inventory = [] # A simple list to hold our FoodItem objects
+
