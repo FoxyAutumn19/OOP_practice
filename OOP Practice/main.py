@@ -82,3 +82,13 @@ class Supermarket:
                     print(f"Not enough stock! Only {item.quantity} available.")
                     return
         print(f"Sorry, we don't sell {item_name}.")
+
+    
+    def check_profit(self):
+        """Calculates and prints the profit at any given point."""
+        # Profit is current money minus the money we started with
+        profit = self.money - self.starting_money
+        print(f"Financial Update for {self.name}")
+        print(f"Current Cash: £{self.money:.2f}")
+        print(f"Total Profit: £{profit:.2f}")
+
