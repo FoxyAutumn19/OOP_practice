@@ -92,3 +92,29 @@ class Supermarket:
         print(f"Current Cash: £{self.money:.2f}")
         print(f"Total Profit: £{profit:.2f}")
 
+
+
+if __name__ == "__main__":
+    # Create our supplier and our supermarket
+    wholesale_supplier = Supplier("Mega Wholesale")
+    my_shop = Supermarket("Friendly Grocer", starting_money=500.00)
+
+    print("1. Buying Stock From Supplier")
+    # Supermarket buys goods (specifying department, item name, retail price, and quantity)
+    my_shop.buy_stock(wholesale_supplier, "frozen", "Frozen Pizza", sell_price=3.50, quantity=20)
+    my_shop.buy_stock(wholesale_supplier, "fresh", "Apples", sell_price=0.80, quantity=50)
+    my_shop.buy_stock(wholesale_supplier, "tinned", "Baked Beans", sell_price=0.60, quantity=100)
+    my_shop.buy_stock(wholesale_supplier, "pharma", "Aspirin", sell_price=1.20, quantity=30)
+
+    # Let's check our financials after buying stock
+    my_shop.check_profit()
+
+    print("2. Selling Stock To Shoppers")
+    # Selling items to customers for a profit markup
+    my_shop.sell_on("Frozen Pizza", quantity=10)
+    my_shop.sell_on("Apples", quantity=40)
+    my_shop.sell_on("Baked Beans", quantity=50)
+    my_shop.sell_on("Aspirin", quantity=15)
+
+    # Let's check our profit now that we have sold items!
+    my_shop.check_profit()
