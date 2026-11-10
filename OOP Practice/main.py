@@ -37,4 +37,31 @@ class Supermarket:
         self.money = starting_money
         self.starting_money = starting_money
         self.inventory = [] # A simple list to hold our FoodItem objects
+        
+    def buy_stock(self, supplier, department, item_name, sell_price, quantity):
+        """Buys stock from a supplier and adds it to the inventory list."""
+        # Find out how much the supplier charges per item
+        cost_per_item = supplier.get_cost(item_name)
+        total_cost = cost_per_item * quantity
+
+        if self.money >= total_cost:
+            # Deduct money from the supermarket's funds
+            self.money -= total_cost
+            
+            # Check if we already have this item in stock
+            found = False
+            for item in self.inventory:
+                if item.name == item_name:
+                    item.quantity += quantity
+                    found = True
+                    break
+            
+            # If it's a completely new item, create it and add to list
+            if not found:
+                new_item = FoodItem(item_name, department, cost_per_item, sell_price, quantity)
+                self.inventory.append(new_item)
+                
+            print(f"Bought {quantity}x {item_name} from {supplier.name} for £{total_cost:.2f}")
+        else:
+            print("Not enough money to buy this stock!")
 
