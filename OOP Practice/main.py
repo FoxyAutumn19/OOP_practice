@@ -6,4 +6,3 @@ class FoodItem:
         self.buy_price = buy_price    # Cost to buy from supplier
         self.sell_price = sell_price  # Price sold to shoppers
         self.quantity = quantity      # How many are in stock
-
